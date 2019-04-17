@@ -1,52 +1,55 @@
-import java.io.*;
-import java.lang.*;
+import java.io.IOException;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 class Sort{
-	public static void main(String args[])throws IOException	{
+	public static void main(String[] args)throws IOException	{
 		int ch;
+		const int OUT_NUMBER = 6;
+		
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		do
 		{
 			System.out.println("\n\n\n1.Bubble Sort\n2.Selection Sort\n3.Insertion Sort.\n4.Quick Sort.\n5.Merge Sort.\n6.Exit.");
 			ch = Integer.parseInt(br.readLine());
 			
-			if( ch == 6 )
+			if( ch == OUT_NUMBER )
 				return;
 			
 			System.out.println("Enter n");
 
-			int n=Integer.parseInt(br.readLine());
-			int a[]=new int[n];
+			int n = Integer.parseInt(br.readLine());
+			int[] a = new int[n];
 
-			for(int i=0;i<n;i++)		{
-				a[i]=Integer.parseInt(br.readLine());
+			for(int i = 0; i < n; i++)		{
+				a[i] = Integer.parseInt(br.readLine());
 			}
 			
 			switch(ch){
 				case 1:
-					BinarySort(a,n);
+					binarySort(a,n);
 					break;
 				case 2:
-					SelectionSort(a,n);
+					selectionSort(a,n);
 					break;
 				case 3:
-					InsertionSort(a,n);
+					insertionSort(a,n);
 					break;
 				case 4:
 					int start=0;
 					int end=n-1;
-					QuickSort(a,start,end);
+					quickSort(a,start,end);
 					print(a,n);
 					break;
 				case 5:
-					MergeSort(a,n);
+					mergeSort(a,n);
 					print(a,n);	
 					break;
 				default:
 					break;
 			}
 		}
-		while ( ch != 6 );
+		while ( ch != OUT_NUMBER );
 	}
 	
 	public static void BinarySort(int a[],int n) {
@@ -58,9 +61,7 @@ class Sort{
 					a[j]=a[(j+1)];
 					a[(j+1)]=temp;
 				}
-			//System.out.print(a[j]);
 			}
-			//System.out.println();
 		}
 		print(a,n);
 	}
@@ -173,7 +174,7 @@ class Sort{
 		{
 			if(a[i]<=pivot)
 			{
-				//swap a[i],apindex
+
 				temp=a[i];
 				a[i]=a[pIndex];
 				a[pIndex]=temp;
