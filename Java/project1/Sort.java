@@ -1,67 +1,59 @@
 import java.io.*;
 import java.lang.*;
 
-class Sort
-{
-	public static void main(String args[])throws IOException
-	{
+class Sort{
+	public static void main(String args[])throws IOException	{
 		int ch;
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		do
-	{
-		System.out.println("\n\n\n1.Bubble Sort\n2.Selection Sort\n3.Insertion Sort.\n4.Quick Sort.\n5.Merge Sort.\n6.Exit.");
-		ch=Integer.parseInt(br.readLine());
-			
-		if(ch==6)
-			return;
-			
-		System.out.println("Enter n");
-			
-		int n=Integer.parseInt(br.readLine());
-		int a[]=new int[n];
-			
-		for(int i=0;i<n;i++)
 		{
-			a[i]=Integer.parseInt(br.readLine());
-		}
+			System.out.println("\n\n\n1.Bubble Sort\n2.Selection Sort\n3.Insertion Sort.\n4.Quick Sort.\n5.Merge Sort.\n6.Exit.");
+			ch = Integer.parseInt(br.readLine());
 			
-		switch(ch)
-		{
-			case 1:
-				BinarySort(a,n);
-				break;
-			case 2:
-				SelectionSort(a,n);
-				break;
-			case 3:
-				InsertionSort(a,n);
-				break;
-			case 4:
-				int start=0;
-				int end=n-1;
-				QuickSort(a,start,end);
-				print(a,n);
-				break;
-			case 5:
-				MergeSort(a,n);
-				print(a,n);	
-				break;
+			if( ch == 6 )
+				return;
+			
+			System.out.println("Enter n");
+
+			int n=Integer.parseInt(br.readLine());
+			int a[]=new int[n];
+
+			for(int i=0;i<n;i++)		{
+				a[i]=Integer.parseInt(br.readLine());
+			}
+			
+			switch(ch){
+				case 1:
+					BinarySort(a,n);
+					break;
+				case 2:
+					SelectionSort(a,n);
+					break;
+				case 3:
+					InsertionSort(a,n);
+					break;
+				case 4:
+					int start=0;
+					int end=n-1;
+					QuickSort(a,start,end);
+					print(a,n);
+					break;
+				case 5:
+					MergeSort(a,n);
+					print(a,n);	
+					break;
+				default:
+					break;
+			}
 		}
-		
-	}
-		
-	while(ch!=6);
+		while ( ch != 6 );
 	}
 	
-	public static void BinarySort(int a[],int n)
-	{
+	public static void BinarySort(int a[],int n) {
 		int temp;
-		for(int i=0;i<n-1;i++)
-		{
-			for(int j=0;j<n-1;j++)
-			{
-				if(a[j]>a[(j+1)])
-				{
+		for(int i=0;i<n-1;i++) {
+			for(int j=0;j<n-1;j++) {
+				if(a[j]>a[(j+1)]) {
 					temp=a[j];
 					a[j]=a[(j+1)];
 					a[(j+1)]=temp;
@@ -69,7 +61,6 @@ class Sort
 			//System.out.print(a[j]);
 			}
 			//System.out.println();
-			
 		}
 		print(a,n);
 	}
